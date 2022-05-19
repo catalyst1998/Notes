@@ -1,7 +1,7 @@
 # URL Loading System
 ## 1 概述
 
-![overview](https://github.com/catalyst1998/Notes/blob/1921152ceac5dfb8d923786e1967a45f3d3a207c/sources/image/URLSession/7.png)
+![overview](https://github.com/catalyst1998/Notes/blob/1921152ceac5dfb8d923786e1967a45f3d3a207c/sources/image/URLSession/overview.png)
 
 URL 加载系统（URL Loading System）使用标准协议（如 https）或自定义协议提供对 URL 标识资源进行访问。URL Loading System 是异步执行的，这样 app 可以保持响应，并在 response 到达时处理数据或错误。
 使用URLSession实例创建一个或多个URLSessionTask实例，URLSessionTask实例可以拉取数据并将数据返回到 app、下载文件，或将文件、数据上传到远程服务器。使用URLSessionConfiguration对象配置URLSession的实例 session（会话），URLSessionConfiguration对象可以配置 caches、cookies 策略，以及是否允许使用数据流量等。
@@ -13,7 +13,7 @@ URL 加载系统（URL Loading System）使用标准协议（如 https）或自�
 URLSessionConfiguration相当于是管家，负责为seesion配置在网络交互过程中的各种属性。
 URLSessionConfiguration 允许通过各种属性来设置configuration，包括setting cookie policies、setting security policies、setting caching policies、Setting HTTP Policy and Proxy Properties、Supporting Background Transfers等
 
-![configuration属性]()
+![configuration属性](https://github.com/catalyst1998/Notes/blob/1921152ceac5dfb8d923786e1967a45f3d3a207c/sources/image/URLSession/属性.png)
 
 从上图上可以看到常用的属性：`allowsCellularAccess`--是否允许访问蜂窝网, `HTTPMaximumConnectionsPerHost`--最大连接数, `requestCachePolicy`--cache策略等
 
@@ -41,7 +41,7 @@ apple提供了三种类型的configuration
 > NSURLSessionTask - a cancelable object that refers to the lifetime of processing a given request.
 URLSessionTask是真正干活的人，但他并没有初始方法，必须归属于seesion。
 URLSessionTask是URL会话任务的抽象类，有四个具体的子类
-![3](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/3.png)
+![3](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/task.png)
 
 - `URLSessionDataTask`：Use this task for GET requests to retrieve data from servers to memory.     
 使用 `dataTask(with:)`方法创建`URLSessionDataTask`实例，datatask 用于请求资源(如：JSON、XML格式的数据），将服务器的响应作为一个或多个`NSData`对象返回到内存中。Default、ephemeral、shared session 支持`URLSessionDataTask`，`backgroundsession` 不支持`URLSessionDataTask`。
@@ -90,6 +90,7 @@ URLSession是整个体系中的领导。
 
 ## 5 URLSessionDelegate
 > NSURLSessionDelegate specifies the methods that a session delegate may respond to.  There are both session specific messages (for example, connection based auth) as well as task based messages.
+![3](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/delegate.png)
 
 URLSessionDelegate定义了URLSession实例调用delegate处理session事件的方法。除实现URLSessionDelegate协议内方法，大部分 delegate 还需要实现URLSessionTaskDelegate、URLSessionDataDelegate、URLSessionDownloadDelegate中的一个或多个协议，以便处理 task 级事件，
 URLSessionDelegate 有三个optional方法
