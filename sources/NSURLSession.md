@@ -1,6 +1,7 @@
 # URL Loading System
 ## 1 概述
 
+![](https://github.com/catalyst1998/Notes/blob/1921152ceac5dfb8d923786e1967a45f3d3a207c/sources/image/URLSession/1.png)
 
 URL 加载系统（URL Loading System）使用标准协议（如 https）或自定义协议提供对 URL 标识资源进行访问。URL Loading System 是异步执行的，这样 app 可以保持响应，并在 response 到达时处理数据或错误。
 使用URLSession实例创建一个或多个URLSessionTask实例，URLSessionTask实例可以拉取数据并将数据返回到 app、下载文件，或将文件、数据上传到远程服务器。使用URLSessionConfiguration对象配置URLSession的实例 session（会话），URLSessionConfiguration对象可以配置 caches、cookies 策略，以及是否允许使用数据流量等。
