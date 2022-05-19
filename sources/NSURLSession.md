@@ -15,7 +15,7 @@ URLSession is both a class and a suite of classes for handling HTTP- and HTTPS-b
 
 *NOTE：一个session可以创建多个task*
 ### 2.2 Create URLSession 
-> [参考资料:](ttps://developer.apple.com/documentation/foundation/nsurlsessionconfiguration?language=objc#topics)
+[参考资料:](https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration?language=objc#topics)
 
 > Configuration options for an NSURLSession.  When a session is created, a copy of the configuration object is made - you cannot modify the configuration of a session after it has been created.
 可以通过单例sharedSession来使用session，也可以通过URLSessionConfiguration来创建configuration，配置session。在创建session的时候会拷贝configuration，并且在创建session之后，不允许修改configuration。
