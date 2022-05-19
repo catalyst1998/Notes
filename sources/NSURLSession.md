@@ -11,11 +11,11 @@ URL 加载系统（URL Loading System）使用标准协议（如 https）或自�
 ## 2 URLSession
 ### 2.1 URLSession overview
 URLSession is both a class and a suite of classes for handling HTTP- and HTTPS-based requests.
-![2](sources/image/URLSession/2.png)
+![2](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/2.png)
 
-**NOTE：一个session可以创建多个task**
+*NOTE：一个session可以创建多个task*
 ### 2.2 Create URLSession 
-> 参考资料:https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration?language=objc#topics
+> [参考资料:](ttps://developer.apple.com/documentation/foundation/nsurlsessionconfiguration?language=objc#topics)
 
 > Configuration options for an NSURLSession.  When a session is created, a copy of the configuration object is made - you cannot modify the configuration of a session after it has been created.
 可以通过单例sharedSession来使用session，也可以通过URLSessionConfiguration来创建configuration，配置session。在创建session的时候会拷贝configuration，并且在创建session之后，不允许修改configuration。
@@ -42,7 +42,7 @@ URLSessionConfiguration 允许通过各种属性来设置configuration，包括s
 ## 4 URLSessionTask
 > NSURLSessionTask - a cancelable object that refers to the lifetime of processing a given request.
 URLSessionTask是URL会话任务的抽象类。有四个具体的子类
-![3](sources/image/URLSession/3.png)
+![3](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/3.png)
 
 - URLSessionDataTask：Use this task for GET requests to retrieve data from servers to memory.     
 使用dataTask(with:)方法创建URLSessionDataTask实例，data task 用于请求资源，将服务器的响应作为一个或多个NSData对象返回到内存中。Default、ephemeral、shared session 支持URLSessionDataTask，background session 不支持URLSessionDataTask。
@@ -58,7 +58,7 @@ URLSessionTask是URL会话任务的抽象类。有四个具体的子类
 
 - URLSessionStreamTask：使用streamTask(withHostName:port:)或streamTask(with:)方法创建URLSessionStreamTask实例。流任务（stream task）从主机、端口或网络服务建立 TCP/IP连接。
 
-**需要注意，在创建完任务之后，需要调用resume 方法才会启动任务。在任务完成或失败前，session 会强引用 task。如果没有特别用途，不需要维护对任务的引用。**
+*NOTE，在创建完任务之后，需要调用resume 方法才会启动任务。在任务完成或失败前，session 会强引用 task。如果没有特别用途，不需要维护对任务的引用。*
 
 ## 5 URLSessionDelegate
 > NSURLSessionDelegate specifies the methods that a session delegate may respond to.  There are both session specific messages (for example, connection based auth) as well as task based messages.
@@ -102,7 +102,7 @@ URLSessionTaskDelegate协议定义了 URL Session 实例调用 delegate 处理 t
 
 `URLSessionTaskTransactionMetrics`对象封装执行会话任务期间收集的性能指标。每个`URLSessionTaskTransactionMetrics`对象包含了一个 request 和 response 属性，对应于 task 的 request 和 response。其也包含时间指标（temporal metrics），以fetchStartDate开始，以responseEndDate结束，以及其他特性，例如：networkProtocolName和resourceFetchType
 
-![4](sources/image/URLSession/4.png)
+![4](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/4.png)
 
 可以使用该方法查看请求各阶段所占用的时间，优化性能。
 
@@ -129,7 +129,7 @@ Data task 或 upload task 在接收完所有数据后会调用urlSession(_:dataT
 - 响应大小足够小，能够进行缓存。例如，如果提供磁盘缓存，则响应不得大于磁盘缓存大小的5%。
 
 ## 8 使用CompletionHandler处理数据
-![5](sources/image/URLSession/5.png)
+![5](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/5.png)
 
 
 完成处理程序需要处理以下三件事：
@@ -139,7 +139,7 @@ Data task 或 upload task 在接收完所有数据后会调用urlSession(_:dataT
 
 ## 9 使用delegate处理数据
 
-![6](sources/image/URLSession/6.png)
+![6](https://github.com/catalyst1998/Notes/blob/main/sources/image/URLSession/6.png)
 
 
 
@@ -153,8 +153,8 @@ Data task 或 upload task 在接收完所有数据后会调用urlSession(_:dataT
 4. 在handler、delegate中处理回调
 
 参考：
-- https://www.youtube.com/watch?v=zvfViYmETuc&t=8s
-- https://github.com/pro648/tips/wiki/URLSession%e8%af%a6%e8%a7%a3
-- https://www.raywenderlich.com/3244963-urlsession-tutorial-getting-started
+- [YouTube视频](https://www.youtube.com/watch?v=zvfViYmETuc&t=8s)
+- [URLSession详解 · pro648/tips Wiki](https://github.com/pro648/tips/wiki/URLSession%e8%af%a6%e8%a7%a3)
+- [URLSession Tutorial: Getting Started](https://www.raywenderlich.com/3244963-urlsession-tutorial-getting-started)
 
 
